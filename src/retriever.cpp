@@ -29,8 +29,8 @@
 
 #include <string.h>
 
-#include <ros/package.h>
-#include <ros/console.h>
+#include <rospack/rospack.h>
+#include <ros2_console/console.hpp>
 
 #include <curl/curl.h>
 
@@ -109,7 +109,16 @@ MemoryResource Retriever::get(const std::string& url)
 
     std::string package = mod_url.substr(0, pos);
     mod_url.erase(0, pos);
-    std::string package_path = ros::package::getPath(package);
+
+    std::string package_path;
+
+    // Locate the path to the package
+    rospack::Rospack rp;
+    std::vector<std::string> search_path;
+    if (rp.getSearchPathFromEnv(search_path)) {
+      rp.crawl(search_path, false);
+      rp.find(package, package_path);
+    }
 
     if (package_path.empty())
     {
