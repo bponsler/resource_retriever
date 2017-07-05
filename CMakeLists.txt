@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(resource_retriever)
 
 # Add support for C++11
@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_python REQUIRED)
 find_package(ros2_console REQUIRED)
+find_package(rospack REQUIRED)
 
 ament_python_install_package(${PROJECT_NAME})
 
@@ -44,6 +45,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 
 ament_export_dependencies(ament_cmake)
 ament_export_dependencies(ros2_console)
+ament_export_dependencies(rospack)
 ament_export_include_directories(${INCLUDE_DIRS})
 ament_export_libraries(${PROJECT_NAME} ${LIBS})
 

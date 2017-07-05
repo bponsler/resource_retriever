@@ -28,6 +28,10 @@
   <depend>curl</depend>
   <depend>ros2_console</depend>
   <depend>boost</depend>
+  <depend>rospack</depend>
+
+  <test_depend>ament_cmake_gtest</test_depend>
+  <test_depend>ament_cmake_nose</test_depend>
 
   <exec_depend>python-rospkg</exec_depend>
 
