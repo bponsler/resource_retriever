@@ -31,7 +31,7 @@ if(NOT CURL_FOUND)
   fail()
 endif(NOT CURL_FOUND)
 
-add_library(${PROJECT_NAME} src/retriever.cpp)
+add_library(${PROJECT_NAME} SHARED src/retriever.cpp)
 target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES} ${LIBS})
 
 if(BUILD_TESTING)
